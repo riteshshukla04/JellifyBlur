@@ -206,16 +206,17 @@ The following blur types are available on both platforms:
 ### iOS Performance
 
 - **Native UIVisualEffectView**: Hardware-accelerated blur with optimal battery usage
-- **Metal Framework**: GPU-accelerated rendering for smooth 60fps performance
+- **System-level Optimization**: Leverages iOS's built-in blur implementation for optimal performance
 - **Automatic Optimization**: Adapts to device capabilities and power state
 
 ### Android Performance
 
-- **Hardware Acceleration**: Uses GPU when available (API 17+)
+- **Modern Hardware Acceleration**: Uses `RenderEffect` on Android 12+ (API 31+)
+- **RenderScript GPU Acceleration**: Uses `ScriptIntrinsicBlur` on Android 5.0+ (API 21-30)
 - **Multi-threaded Processing**: Background blur calculation to prevent UI blocking
 - **Memory Management**: Automatic bitmap recycling and memory optimization
 - **Caching**: Intelligent blur result caching for repeated operations
-- **Fallback Support**: Graceful degradation on older devices
+- **Fallback Support**: Optimized software blur for older/unsupported devices
 
 ## Accessibility
 
@@ -239,7 +240,7 @@ The library automatically respects the system's "Reduce Transparency" accessibil
 - Uses native `UIVisualEffectView` for optimal performance and battery life
 - All blur types supported with system-native appearance
 - Automatic dark/light mode adaptation
-- Metal framework integration for GPU acceleration
+- Leverages iOS's built-in hardware acceleration through system APIs
 
 **Android:**
 
