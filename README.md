@@ -1,6 +1,8 @@
-# JellifyBlur
+# blur-react-native
 
 A powerful React Native library that provides native blur effects for both iOS and Android. Create beautiful, performant blur overlays with various blur types and customization options.
+
+**⚠️ New Architecture Only**: This library requires React Native 0.76+ with the New Architecture (Fabric) enabled.
 
 ## Features
 
@@ -9,7 +11,14 @@ A powerful React Native library that provides native blur effects for both iOS a
 - 🔧 **Customizable**: Adjustable blur amount and fallback colors
 - ♿ **Accessibility**: Respects reduced transparency settings
 - 📱 **Cross-Platform**: Works on both iOS and Android with platform-specific optimizations
-- 🚀 **Modern Architecture**: Built with React Native's New Architecture (Fabric) support
+- 🚀 **New Architecture**: Built exclusively for React Native's New Architecture (Fabric)
+
+## Requirements
+
+- **React Native 0.76 or higher**
+- **New Architecture (Fabric) enabled**
+- iOS 13.0 or higher
+- Android API 21 (Android 5.0) or higher
 
 ## Installation
 
@@ -25,91 +34,22 @@ yarn add blur-react-native
 
 ### iOS Setup
 
-#### Automatic Installation (React Native 0.60+)
-
-For React Native 0.60 and above, the library will be automatically linked. You just need to install the pods:
+The library will be automatically linked with React Native 0.76+. You just need to install the pods:
 
 ```sh
 cd ios && pod install
 ```
-
-#### Manual Installation (React Native < 0.60)
-
-If you're using an older version of React Native, you'll need to manually link the library:
-
-1. Install the pods:
-
-```sh
-cd ios && pod install
-```
-
-2. If automatic linking doesn't work, add the following to your `Podfile`:
-
-```ruby
-pod 'JellifyBlur', :path => '../node_modules/blur-react-native'
-```
-
-3. Run pod install again:
-
-```sh
-pod install
-```
-
-#### Requirements
-
-- iOS 10.0 or higher
-- React Native 0.60 or higher (recommended)
 
 ### Android Setup
 
-#### Automatic Installation
-
-For React Native 0.60+, the Android library will be automatically linked. No additional setup is required.
-
-#### Manual Installation (React Native < 0.60)
-
-If you're using an older version of React Native:
-
-1. Add the following to `android/settings.gradle`:
-
-```gradle
-include ':blur-react-native'
-project(':blur-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/blur-react-native/android')
-```
-
-2. Add the dependency to `android/app/build.gradle`:
-
-```gradle
-dependencies {
-    implementation project(':blur-react-native')
-}
-```
-
-3. Add the package to `MainApplication.java`:
-
-```java
-import com.riteshshukla.jellifyblur.JellifyBlurViewPackage;
-
-@Override
-protected List<ReactPackage> getPackages() {
-    return Arrays.<ReactPackage>asList(
-        new MainReactPackage(),
-        new JellifyBlurViewPackage() // Add this line
-    );
-}
-```
-
-#### Requirements
-
-- Android API 17 (Android 4.2) or higher
-- React Native 0.60 or higher (recommended)
+The library will be automatically linked with React Native 0.76+. No additional setup is required.
 
 #### Android Technical Stack
 
 The library automatically chooses the best blur implementation based on the Android API level:
 
 - **Android 12+ (API 31+)**: Uses `RenderEffect` for hardware-accelerated blur
-- **Android 4.2+ (API 17+)**: Uses `RenderScript` with `ScriptIntrinsicBlur` for GPU-accelerated blur
+- **Android 5.0+ (API 21+)**: Uses `RenderScript` with `ScriptIntrinsicBlur` for GPU-accelerated blur
 - **Fallback**: Uses optimized software blur with multi-pass box blur algorithm
 - **Performance Optimizations**: Background threading, bitmap caching, and memory management
 
@@ -287,10 +227,10 @@ The library automatically respects the system's "Reduce Transparency" accessibil
 
 ## Platform Support
 
-- ✅ **iOS 10.0+**: Native UIVisualEffectView blur effects
-- ✅ **Android 4.2+ (API 17+)**: RenderScript hardware-accelerated blur
+- ✅ **iOS 13.0+**: Native UIVisualEffectView blur effects
+- ✅ **Android 5.0+ (API 21+)**: RenderScript hardware-accelerated blur
 - ✅ **Android 12+ (API 31+)**: Modern RenderEffect blur
-- ✅ **All Android versions**: Fallback software blur implementation
+- ✅ **React Native 0.76+**: New Architecture (Fabric) support only
 
 ### Platform-Specific Implementation Details
 
@@ -304,15 +244,21 @@ The library automatically respects the system's "Reduce Transparency" accessibil
 **Android:**
 
 - **API 31+**: `android.graphics.RenderEffect` for hardware-accelerated blur
-- **API 17-30**: `RenderScript` with `ScriptIntrinsicBlur` for GPU acceleration
-- **API < 17**: Optimized multi-pass box blur algorithm
+- **API 21-30**: `RenderScript` with `ScriptIntrinsicBlur` for GPU acceleration
+- **Fallback**: Optimized multi-pass box blur algorithm for older devices
 - Background processing with `HandlerThread` for smooth UI
 - LRU bitmap caching for performance optimization
 - Automatic memory management and cleanup
 
 ## Troubleshooting
 
-### iOS Issues
+### Common Issues
+
+**New Architecture not enabled:**
+
+This library requires React Native's New Architecture (Fabric). Ensure you have:
+- React Native 0.76 or higher
+- New Architecture enabled in your app
 
 **Pod install fails:**
 
@@ -322,15 +268,10 @@ cd ios && rm -rf Pods Podfile.lock && pod install --repo-update
 
 **Build errors:**
 
-- Ensure iOS deployment target is 10.0 or higher
-- Clean build folder: Product → Clean Build Folder in Xcode
-
-### Android Issues
-
-**Build failures:**
-
+- Ensure iOS deployment target is 13.0 or higher
+- Ensure Android `minSdkVersion` is 21 or higher
 - Ensure `compileSdkVersion` is 31 or higher for modern blur effects
-- Check that `minSdkVersion` is 17 or higher
+- Clean build folder: Product → Clean Build Folder in Xcode
 
 **Performance issues:**
 
