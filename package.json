@@ -1,5 +1,5 @@
 {
-  "name": "react-native-blur-view",
+  "name": "blur-react-native",
   "version": "0.1.0",
   "description": "Jellify Blur",
   "main": "./lib/module/index.js",
@@ -47,14 +47,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/riteshshukla04/react-native-blur-view.git"
+    "url": "git+https://github.com/riteshshukla04/blur-react-native.git"
   },
   "author": "Ritesh Shukla <riteshshukla2381@gmail.com> (https://github.com/riteshshukla04)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/riteshshukla04/react-native-blur-view/issues"
+    "url": "https://github.com/riteshshukla04/blur-react-native/issues"
   },
-  "homepage": "https://github.com/riteshshukla04/react-native-blur-view#readme",
+  "homepage": "https://github.com/riteshshukla04/blur-react-native#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

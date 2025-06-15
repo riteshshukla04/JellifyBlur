@@ -9,7 +9,7 @@ import {
   SafeAreaView,
   StatusBar,
 } from 'react-native';
-import { BlurView, type BlurType } from 'react-native-blur-view';
+import { BlurView, type BlurType } from 'blur-react-native';
 
 const blurTypes: BlurType[] = [
   'light',

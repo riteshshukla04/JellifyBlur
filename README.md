@@ -14,13 +14,13 @@ A powerful React Native library that provides native blur effects for both iOS a
 ## Installation
 
 ```sh
-npm install react-native-blur-view
+npm install blur-react-native
 ```
 
 Or with yarn:
 
 ```sh
-yarn add react-native-blur-view
+yarn add blur-react-native
 ```
 
 ### iOS Setup
@@ -46,7 +46,7 @@ cd ios && pod install
 2. If automatic linking doesn't work, add the following to your `Podfile`:
 
 ```ruby
-pod 'JellifyBlur', :path => '../node_modules/react-native-blur-view'
+pod 'JellifyBlur', :path => '../node_modules/blur-react-native'
 ```
 
 3. Run pod install again:
@@ -73,15 +73,15 @@ If you're using an older version of React Native:
 1. Add the following to `android/settings.gradle`:
 
 ```gradle
-include ':react-native-blur-view'
-project(':react-native-blur-view').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-blur-view/android')
+include ':blur-react-native'
+project(':blur-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/blur-react-native/android')
 ```
 
 2. Add the dependency to `android/app/build.gradle`:
 
 ```gradle
 dependencies {
-    implementation project(':react-native-blur-view')
+    implementation project(':blur-react-native')
 }
 ```
 
@@ -120,7 +120,7 @@ The library automatically chooses the best blur implementation based on the Andr
 ```tsx
 import React from 'react';
 import { View, Text } from 'react-native';
-import { BlurView } from 'react-native-blur-view';
+import { BlurView } from 'blur-react-native';
 
 export default function App() {
   return (
@@ -149,7 +149,7 @@ export default function App() {
 
 ```tsx
 import React from 'react';
-import { BlurView, BlurType } from 'react-native-blur-view';
+import { BlurView, BlurType } from 'blur-react-native';
 
 const blurTypes: BlurType[] = [
   'light',
