@@ -1,40 +1,42 @@
 import React from 'react';
 import type { ViewStyle } from 'react-native';
-import JellifyBlurViewNativeComponent, { type BlurType } from './JellifyBlurViewNativeComponent';
+import JellifyBlurViewNativeComponent, {
+  type BlurType,
+} from './JellifyBlurViewNativeComponent';
 
 export type { BlurType } from './JellifyBlurViewNativeComponent';
 
-export interface JellifyBlurViewProps {
+export interface BlurViewProps {
   /**
    * The blur effect type to apply
    * @default 'regular'
    */
   blurType?: BlurType;
-  
+
   /**
    * The blur amount/intensity (0-100)
    * @default 100
    */
   blurAmount?: number;
-  
+
   /**
    * Fallback color when reduced transparency is enabled
    * @default '#FFFFFF'
    */
   reducedTransparencyFallbackColor?: string;
-  
+
   /**
    * Style applied to the blur view
    */
   style?: ViewStyle;
-  
+
   /**
    * Child components to render on top of the blur
    */
   children?: React.ReactNode;
 }
 
-export const JellifyBlurView: React.FC<JellifyBlurViewProps> = ({
+export const BlurView: React.FC<BlurViewProps> = ({
   blurType = 'regular',
   blurAmount = 100,
   reducedTransparencyFallbackColor = '#FFFFFF',
@@ -55,4 +57,4 @@ export const JellifyBlurView: React.FC<JellifyBlurViewProps> = ({
   );
 };
 
-export default JellifyBlurView;
+export default BlurView;

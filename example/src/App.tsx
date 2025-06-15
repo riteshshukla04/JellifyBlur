@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -9,7 +9,7 @@ import {
   SafeAreaView,
   StatusBar,
 } from 'react-native';
-import { JellifyBlurView, type BlurType } from 'jellify-blur';
+import { BlurView, type BlurType } from 'react-native-blur-view';
 
 const blurTypes: BlurType[] = [
   'light',
@@ -46,7 +46,7 @@ export default function App() {
 
         {/* Main Blur Demo */}
         <View style={styles.demoContainer}>
-          <JellifyBlurView
+          <BlurView
             blurType={selectedBlurType}
             blurAmount={blurAmount}
             style={styles.mainBlurView}
@@ -61,7 +61,7 @@ export default function App() {
                 Blur Amount: {blurAmount}%
               </Text>
             </View>
-          </JellifyBlurView>
+          </BlurView>
         </View>
 
         {/* Blur Type Selection */}
@@ -78,13 +78,10 @@ export default function App() {
                   ]}
                   onPress={() => setSelectedBlurType(type)}
                 >
-                  <JellifyBlurView blurType={type} style={styles.smallBlurView}>
-                    <View style={styles.smallBlurContent}>
-                      <Text style={styles.smallBlurText} numberOfLines={2}>
-                        {type}
-                      </Text>
-                    </View>
-                  </JellifyBlurView>
+                  <BlurView blurType={type} style={styles.smallBlurView}>
+                    <Text style={styles.smallBlurText}>{type}</Text>
+                    <Text style={styles.smallBlurSubText}>Tap to select</Text>
+                  </BlurView>
                 </TouchableOpacity>
               ))}
             </View>
@@ -104,13 +101,13 @@ export default function App() {
                 ]}
                 onPress={() => setBlurAmount(amount)}
               >
-                <JellifyBlurView
+                <BlurView
                   blurType="regular"
                   blurAmount={amount}
                   style={styles.amountBlurView}
                 >
                   <Text style={styles.amountText}>{amount}%</Text>
-                </JellifyBlurView>
+                </BlurView>
               </TouchableOpacity>
             ))}
           </View>
@@ -123,12 +120,9 @@ export default function App() {
             <Text style={styles.overlayBackgroundText}>
               Background Content Here
             </Text>
-            <JellifyBlurView
-              blurType="systemMaterial"
-              style={styles.overlayBlur}
-            >
+            <BlurView blurType="systemMaterial" style={styles.overlayBlur}>
               <Text style={styles.overlayText}>Blurred Overlay</Text>
-            </JellifyBlurView>
+            </BlurView>
           </View>
         </View>
       </ScrollView>
@@ -161,12 +155,16 @@ const styles = StyleSheet.create({
   },
   demoContainer: {
     alignItems: 'center',
+    overflow: 'hidden',
+    width: 280,
+    height: 200,
+    borderRadius: 40,
     marginBottom: 30,
   },
   mainBlurView: {
     width: 280,
     height: 200,
-    borderRadius: 20,
+
     overflow: 'hidden',
   },
   blurContent: {
@@ -214,16 +212,16 @@ const styles = StyleSheet.create({
     width: 100,
     height: 80,
   },
-  smallBlurContent: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 8,
-  },
   smallBlurText: {
     fontSize: 12,
     fontWeight: '500',
     color: '#333',
+    textAlign: 'center',
+  },
+  smallBlurSubText: {
+    fontSize: 12,
+    fontWeight: '500',
+    color: '#666',
     textAlign: 'center',
   },
   amountContainer: {
@@ -289,5 +287,25 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     color: '#333',
+  },
+  overlaySubText: {
+    fontSize: 14,
+    fontWeight: '500',
+    color: '#666',
+    textAlign: 'center',
+  },
+  blurView: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+  overlayBlurView: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
 });

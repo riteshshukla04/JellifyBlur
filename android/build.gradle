@@ -26,13 +26,16 @@ def getExtOrIntegerDefault(name) {
 }
 
 android {
-  namespace "com.jellifyblur"
+  namespace "com.riteshshukla.jellifyblur"
 
   compileSdkVersion getExtOrIntegerDefault("compileSdkVersion")
 
   defaultConfig {
     minSdkVersion getExtOrIntegerDefault("minSdkVersion")
     targetSdkVersion getExtOrIntegerDefault("targetSdkVersion")
+    
+    renderscriptTargetApi 21
+    renderscriptSupportModeEnabled true
   }
 
   buildFeatures {
@@ -81,5 +84,5 @@ dependencies {
 react {
   jsRootDir = file("../src/")
   libraryName = "JellifyBlurView"
-  codegenJavaPackageName = "com.jellifyblur"
+  codegenJavaPackageName = "com.riteshshukla.jellifyblur"
 }

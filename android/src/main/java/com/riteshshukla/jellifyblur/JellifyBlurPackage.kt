@@ -1,4 +1,4 @@
-package com.jellifyblur
+package com.riteshshukla.jellifyblur
 
 import com.facebook.react.ReactPackage
 import com.facebook.react.bridge.NativeModule
