@@ -1,14 +1,14 @@
 # JellifyBlur
 
-A powerful React Native library that provides native blur effects for iOS using UIVisualEffectView. Create beautiful, performant blur overlays with various blur types and customization options.
+A powerful React Native library that provides native blur effects for both iOS and Android. Create beautiful, performant blur overlays with various blur types and customization options.
 
 ## Features
 
-- 🎨 **Multiple Blur Types**: Support for 10+ different iOS blur effects
-- ⚡ **Native Performance**: Uses UIVisualEffectView for optimal performance
+- 🎨 **Multiple Blur Types**: Support for 10+ different blur effects on both platforms
+- ⚡ **Native Performance**: Uses UIVisualEffectView on iOS and optimized blur algorithms on Android
 - 🔧 **Customizable**: Adjustable blur amount and fallback colors
 - ♿ **Accessibility**: Respects reduced transparency settings
-- 📱 **iOS Focused**: Designed specifically for iOS with native blur effects
+- 📱 **Cross-Platform**: Works on both iOS and Android with platform-specific optimizations
 
 ## Installation
 
@@ -25,6 +25,14 @@ yarn add jellify-blur
 ### iOS Setup
 
 For iOS, no additional setup is required as the library uses native UIVisualEffectView.
+
+### Android Setup
+
+For Android, no additional setup is required. The library automatically chooses the best blur implementation based on the Android API level:
+
+- **Android 12+ (API 31+)**: Uses optimized modern blur algorithms
+- **Android 4.2+ (API 17+)**: Uses RenderScript for hardware-accelerated blur
+- **Older versions**: Uses fallback software blur implementation
 
 ## Usage
 
@@ -181,8 +189,21 @@ The library automatically respects the system's "Reduce Transparency" accessibil
 
 ## Platform Support
 
-- ✅ iOS 10.0+
-- ❌ Android (not supported - iOS specific blur effects)
+- ✅ **iOS 10.0+**: Native UIVisualEffectView blur effects
+- ✅ **Android 4.2+ (API 17+)**: RenderScript and optimized blur algorithms  
+- ✅ **Android (all versions)**: Fallback blur implementation for older devices
+
+### Platform-Specific Notes
+
+**iOS:**
+- Uses native `UIVisualEffectView` for optimal performance
+- All blur types supported with system-native appearance
+- Automatic dark/light mode adaptation
+
+**Android:**
+- Multiple blur implementations for different API levels
+- Hardware-accelerated blur on supported devices
+- Optimized algorithms for smooth performance
 
 ## Contributing
 
